@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+    </head>
+
+    <header>
+        <h1  style="width: 10%;">
+            Autó módosítása
+        </h1>
+    </header>
+
+    <body>
+        <div style="margin: auto; width: 50%; background-color: white; text-align: center;">
+            <hr/>
+			
+			<form th:action="@{/Admin/saveeditedcar}" th:object="${editcar}" method="POST">
+				
+				<input type="text" th:field="*{Brand}" placeholder="Márka" />
+				<br>
+				<input type="text" th:field="*{Model}" placeholder="Model" />
+				<br>
+				<input type="text" th:field="*{LicensePlate}" placeholder="Rendszám" />
+                <br>
+                <input type="text" th:field="*{DailyPrice}" placeholder="Napi Ár" />
+                <input type="hidden" th:field="*{id}" />
+				<br>
+				<button type="submit" >Mentés</button>
+				
+			</form>
+			<hr/>
+			<a th:href="@{/Admin/Allcar}">Back to list</a>
+        </div>
+    </body>
+
+</html>

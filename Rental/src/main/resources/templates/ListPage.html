@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+    </head>
+
+    <header>
+        <h1  style="width: 10%;">
+            Welcome to LegitCarRentals.com
+        </h1>
+        <h1>      
+            Szabad Autók 
+        </h1>
+    </header>
+
+    <body>
+        <div style="width: 90%; background-color: white; margin: auto; display: flex;">
+		
+			<table id="CarsTable" class="styled-table" style="width: 100%;" >
+			
+				<thead>
+					<tr>
+						<th>Márka</th>
+						<th>Model</th>
+						<th>Rendszám</th>
+						<th>Napi Ár(Ft)</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="car: ${cars}">
+						<td th:text="${car.Brand}" />
+						<td th:text="${car.Model}" />
+						<td th:text="${car.LicensePlate}" />
+						<td th:text="${car.DailyPrice}" />
+						<td>
+							<a th:href="@{/Reserve(carid=${car.id})}">Lefoglalom</a>
+						</td>
+					</tr>
+				</tbody>	
+			</table>
+		</div>
+    </body>
+
+</html>

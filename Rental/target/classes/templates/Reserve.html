@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+    </head>
+
+    <header>
+        <h1  style="width: 10%;">
+            Lefoglalás
+        </h1>
+    </header>
+
+    <body>
+        <div style="margin: auto; width: 50%; background-color: white; text-align: center;">
+            <hr/>
+			
+			<form th:action="@{/Reservesave}" th:object="${newres}" method="POST">
+                
+				<input type="text" th:field="*{Name}" placeholder="Név:"/>
+				<br>
+				<input type="text" th:field="*{Email}" placeholder="Email:" />
+				<br>
+				<input type="text" th:field="*{Address}" placeholder="Cím:" />
+                <br>
+                <input type="text" th:field="*{Phone}" placeholder="Telefonszám:" />
+                <br>
+                <input type="hidden" th:field="*{carId}" />
+                <input type="hidden" th:field="*{BeginTime}" />
+                <input type="hidden" th:field="*{EndTime}" />
+                <input type="hidden" th:field="*{days}" />
+                <input type="hidden" th:field="*{price}" />
+				<button type="submit">Foglalás leadása</button>
+				
+			</form>
+			<hr/>
+			<a th:href="@{/}">Vissza</a>
+        </div>
+    </body>
+
+</html>

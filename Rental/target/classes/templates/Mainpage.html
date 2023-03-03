@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+    </head>
+
+    <header>
+        <h1  style="width: 10%;">
+            Welcome to LegitCarRentals.com
+        </h1>
+        <div>
+            <a href="Admin/Allcar">
+            Administrátor oldal
+            </a>
+        </div>
+    </header>
+
+    <body>
+        <div class="flexdiv">
+            <div style="background-color: white; padding: 2%;margin: 10%;">
+                Milyen idősávban szeretne kocsit foglalni?
+                <div>
+                <form th:action="@{/List}" method="POST">
+                    <label for="start">Kezdeti dátum:</label>
+                    <input type="date" id="start" name="localDatestart"
+                        min="2023-01-01" max="2023-12-31" required>
+
+                    <label for="end">Vége dátum:</label>
+                    <input type="date" id="end" name="localDateend"
+                        min="2023-01-01" max="2023-12-31" required>
+                    <div id="error" style="color: red;">
+                    </div>
+                    <input type="submit" value="Következő" id="mysub" disabled = "true">
+                </form>
+                <script type="text/javascript" language="javascript">
+
+                    document.getElementById('start').addEventListener('change', errors, false);
+                    document.getElementById('end').addEventListener('change', errors, false);
+
+                    function errors(){         
+                        let begin = new Date(document.getElementById('start').value)
+                        let end = new Date(document.getElementById('end').value)
+                        
+                        if(begin > end){
+                            document.getElementById('mysub').disabled = true;
+                            document.getElementById('error').innerHTML = "A kezdeti dátum nem lehet késöbbi, mint a befejezési dátum!";
+                        }else{
+                            document.getElementById('mysub').disabled = false;
+                            document.getElementById('error').innerHTML = "";
+                        }
+                    }
+                </script>
+                </div>
+            </div>
+            <div style="margin: 10%; background-color: white; width: 40%; padding: 2%;">
+                <h3>
+                    Rólunk:
+                </h3> 
+                <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent a tincidunt nunc, non euismod urna. Nam posuere congue nisl sed tincidunt. Nam ac purus a magna rutrum rutrum. Ut feugiat lorem ut nulla feugiat rutrum. Aliquam tristique, ex vitae convallis malesuada, dolor erat bibendum mi, a accumsan justo justo vitae tortor. Duis mollis augue sit amet viverra vehicula. Proin sed blandit erat. Morbi egestas porta neque, sed consequat purus pellentesque nec. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Fusce imperdiet accumsan tellus, eu vehicula sem vestibulum vitae. Nunc a lacus tincidunt, dictum massa vel, sodales augue. Cras aliquet malesuada metus, id hendrerit dui tincidunt eu. Nulla lacinia velit ex, ut suscipit risus pharetra vel.
+                </p>
+            </div>
+        </div>
+    </body>
+
+</html>
